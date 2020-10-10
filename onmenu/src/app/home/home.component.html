@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="card" *ngFor="let cust of CustomersDetail">
+        <div class="card-heading bg-primary text-white">
+            <h1>{{cust.Name}}</h1>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h6>Email</h6>
+                </div>
+                <div class="col-sm-8">
+                   : {{cust.email}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <h6>Orders</h6>
+                </div>
+                <div class="col-sm-8" *ngFor="let order of cust.order">
+                    {{order.name}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <label>Total</label>
+                </div>
+                <div class="col-sm-8">
+                   : {{ cust.total }}
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="button" class="btn btn-primary mr-1" (click)="editOrder(cust.id)">Edit</button>
+            <!-- <button type="button" class="btn btn-danger" (click)="surranceDelete = false" *ngIf="surranceDelete">delete</button> -->
+            <!-- <div *ngIf="surranceDelete === false">
+            <label>Are you sure you want to delete</label>
+            <button type="button" class="btn btn-danger mr-1" (click)="FinalDelete(cust.id)">Yes</button>
+            <button type="button" class="btn btn-primary" (click)="surranceDelete = true">No</button> -->
+
+            <span *ngIf="surranceDelete">
+                <span>Are you sure you want to delete ?</span>
+                <button class="btn btn-danger" (click)="FinalDelete(cust.id)">Yes</button>
+                <button class="btn btn-primary" (click)="surranceDelete=false">No</button>
+            </span>
+            <span *ngIf="!surranceDelete">
+                <button class="btn btn-danger" (click)="surranceDelete=true">Delete</button>
+            </span>
+          
+            <!-- </div> -->
+        </div>
+    </div>
+</div>

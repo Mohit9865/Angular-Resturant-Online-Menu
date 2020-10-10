@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-primary text-white">{{header}}</div>
+        <div class="card-body bg-warning text-white">
+            <form [formGroup]="orderForm">
+                <div class="from-group">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="name">Name </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="name" formControlName="name">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="from-group">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="email">Email </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="email" formControlName="email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4" *ngIf="toggleMenu">
+                        <button type="button" (click)="GetAllItem()" class="btn btn-primary">Show Menu</button>
+                    </div>
+                </div>
+                <div *ngIf="ricebolean">
+                    <div formArrayName="RiceArray" *ngFor="let ricei of RiceArrayCheck.controls; let i = index"
+                        class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="rice{{i}}" [formControl]="ricei" (change)="getSelectedItem()">
+                        <label class="custom-control-label" for="rice{{i}}">{{RiceItem[i].name}}</label>
+                    </div>
+                </div>
+
+                <div *ngIf="starterbool">
+                    <div formArrayName="starterArray" *ngFor="let starteri of StarterArrayCheck.controls; let i = index"
+                        class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="starter{{i}}" [formControl]="starteri" (change)="getSelectedItem()">
+                        <label class="custom-control-label" for="starter{{i}}">{{StatrterItem[i].name}}</label>
+                    </div>
+                </div>
+
+                <div *ngIf="chapbool">
+                    <div formArrayName="ChapArray" *ngFor="let chaapi of ChapArrayCheck.controls; let i = index"
+                        class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="chap{{i}}" [formControl]="chaapi" (change)="getSelectedItem()">
+                        <label class="custom-control-label" for="chap{{i}}">{{Chapatiss[i].name}}</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label><h6>Total</h6></label>
+                    </div>
+                    <div class="col-sm-8">
+                        {{total_price}}
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+        <div class="card-footer bg-primary text-white">
+            <button type="button" (click)="onSubmit1()" class="btn btn-danger">Submit</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<mat-card>
+  <div class="wrapper">
+    <div class="wrapped-div">
+      <mat-tab-group>
+      <div class="tab-header">
+        
+        <mat-tab>
+          <h2 routerLink='/user/login' routerLinkActive='active'>Sign In</h2>
+        </mat-tab>
+        <mat-tab>
+          <h2 routerLink='/user/registration' routerLinkActive='active'>Sign Up</h2>
+        </mat-tab>
+      </div>
+    </mat-tab-group>
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+          
+          <router-outlet></router-outlet>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+
+
